@@ -3,8 +3,10 @@
 //! 
 //! ## Usage
 //! To use the embed macro in your application, add the following line to your Rust dependencies.
-//! ```
-//! embed = { git = "https://github.com/stallmanifold/embed" }
+//! ```text
+//! // ...
+//! embed = { git = "https://github.com/lambdaxymox/embed" }
+//! // ...
 //! ```
 //! 
 //! ## Examples
