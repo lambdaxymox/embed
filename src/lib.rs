@@ -36,3 +36,15 @@ macro_rules! embed {
         vec
     }}
 }
+
+/// This macro includes as utf8-encoded file as a string. The file is loaded 
+/// relative to the root path of the assets `embed` generated in the build phase. 
+/// This macro will yield an expressoion of type `&'static str` which is the
+/// contents of the file.
+#[macro_export]
+macro_rules! embed_str {
+    ($asset_path:expr) => {
+        include_str!(concat!(env!("OUT_DIR"), "/embed/", $asset_path))
+    }
+}
+
