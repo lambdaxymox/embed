@@ -27,17 +27,6 @@ pub mod vector;
 const EMBED_PATH: &str = "/embed/";
 
 
-pub trait CompileAsset {
-    type IntermediateRepresentation;
-    type Output;
-
-    fn read_source() -> Self;
-    fn compile_asset() -> Self::IntermediateRepresentation;
-    fn synthesize_code() -> Self::Output;
-    fn write_code() -> ();
-}
-
-
 /// The `embed_bytes` macro includes a file as a vector of bytes. It loads the file relative 
 /// to the root path of the assets `embed` generated in the build phase. this macro will yield a
 /// `Vec<u8>` expression which is the contents of the file as raw bytes.
