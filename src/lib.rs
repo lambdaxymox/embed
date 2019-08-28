@@ -21,10 +21,11 @@
 //! ```
 //! 
 
-/// The embed macro takes a file path, statically loads the file, and generates the code 
-/// to drop it into a binary vector at runtime. 
+/// The `embed_bytes` macro includes a file as a vector of bytes. It loads the file relative 
+/// to the root path of the assets `embed` generated in the build phase. this macro will yield a
+/// `Vec<u8>` expression which is the contents of the file as raw bytes.
 #[macro_export]
-macro_rules! embed {
+macro_rules! embed_bytes {
     ($asset:expr) => {{
         let bytes = include_bytes!($asset);
         let length = bytes.len();
@@ -37,9 +38,9 @@ macro_rules! embed {
     }}
 }
 
-/// This macro includes as utf8-encoded file as a string. The file is loaded 
+/// This macro includes a utf8-encoded file as a string. The file is loaded 
 /// relative to the root path of the assets `embed` generated in the build phase. 
-/// This macro will yield an expressoion of type `&'static str` which is the
+/// This macro will yield an expression of type `&'static str` which is the
 /// contents of the file.
 #[macro_export]
 macro_rules! embed_str {
