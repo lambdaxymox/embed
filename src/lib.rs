@@ -20,9 +20,22 @@
 //! }
 //! ```
 //! 
+pub mod vector;
+
 
 #[allow(dead_code)]
 const EMBED_PATH: &str = "/embed/";
+
+
+pub trait CompileAsset {
+    type IntermediateRepresentation;
+    type Output;
+
+    fn read_source() -> Self;
+    fn compile_asset() -> Self::IntermediateRepresentation;
+    fn synthesize_code() -> Self::Output;
+    fn write_code() -> ();
+}
 
 
 /// The `embed_bytes` macro includes a file as a vector of bytes. It loads the file relative 
