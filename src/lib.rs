@@ -54,14 +54,7 @@ macro_rules! embed_str {
 /// `Vec<u8>` expression which is the contents of the file as raw bytes.
 #[macro_export]
 macro_rules! embed {
-    ($asset_path:expr) => {{
-        let bytes = include_bytes!($asset_path);
-        let length = bytes.len();
-        let mut vec: Vec<u8> = vec![0; length];
-        for i in 0..length {
-            vec[i] = bytes[i];
-        }
-
-        vec
-    }}
+    ($asset_path:expr) => {
+        include!(concat!(env!("OUT_DIR"), "/embed/", $asset_path));
+    }
 }
