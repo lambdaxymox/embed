@@ -21,13 +21,17 @@
 //! ```
 //! 
 
+#[allow(dead_code)]
+const EMBED_PATH: &str = "/embed/";
+
+
 /// The `embed_bytes` macro includes a file as a vector of bytes. It loads the file relative 
 /// to the root path of the assets `embed` generated in the build phase. this macro will yield a
 /// `Vec<u8>` expression which is the contents of the file as raw bytes.
 #[macro_export]
 macro_rules! embed_bytes {
     ($asset_path:expr) => {{
-        let bytes = include_bytes!(concat!(env!("OUT_DIR"), "/embed/", $asset_path));
+        let bytes = include_bytes!(concat!(env!("OUT_DIR"), EMBED_PATH, $asset_path));
         let length = bytes.len();
         let mut vec: Vec<u8> = vec![0; length];
         for i in 0..length {
@@ -45,7 +49,7 @@ macro_rules! embed_bytes {
 #[macro_export]
 macro_rules! embed_str {
     ($asset_path:expr) => {
-        include_str!(concat!(env!("OUT_DIR"), "/embed/", $asset_path))
+        include_str!(concat!(env!("OUT_DIR"), EMBED_PATH, $asset_path))
     }
 }
 
@@ -55,6 +59,6 @@ macro_rules! embed_str {
 #[macro_export]
 macro_rules! embed {
     ($asset_path:expr) => {
-        include!(concat!(env!("OUT_DIR"), "/embed/", $asset_path));
+        include!(concat!(env!("OUT_DIR"), EMBED_PATH, $asset_path));
     }
 }
