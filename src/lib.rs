@@ -20,7 +20,6 @@
 //! }
 //! ```
 //! 
-pub mod vector;
 
 
 #[allow(dead_code)]
